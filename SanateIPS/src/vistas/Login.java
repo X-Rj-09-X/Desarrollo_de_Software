@@ -114,22 +114,39 @@ public class Login extends javax.swing.JFrame {
 
     private void btnIngrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngrearActionPerformed
        
-        String usuario = txtUsuario.getText();
-        String contrasena = new String(txtContraseña.getPassword());
+        String usuario = txtUsuario.getText().trim();
 
-        if (usuario.equals("recepcion") && contrasena.equals("1234")) {
+        String contrasena =
+                new String(txtContraseña.getPassword());
 
-            JOptionPane.showMessageDialog(this, "Bienvenido a Recepción");
+        if (usuario.equals("recepcion")
+                && contrasena.equals("1234")) {
 
-        } else if (usuario.equals("medico") && contrasena.equals("1234")) {
+            service.PacienteService pacienteService =
+                    new service.PacienteService();
 
-            JOptionPane.showMessageDialog(this, "Bienvenido, Médico");
+            MenuRecepcion menuRecepcion =
+                    new MenuRecepcion(pacienteService);
+
+            menuRecepcion.setVisible(true);
+
+            this.dispose();
+
+        } else if (usuario.equals("medico")
+                && contrasena.equals("1234")) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Bienvenido, Médico"
+            );
 
         } else {
 
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
-
-        } // TODO add your handling code here:
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Usuario o contraseña incorrectos"
+            );
+        }
     }//GEN-LAST:event_btnIngrearActionPerformed
 
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed

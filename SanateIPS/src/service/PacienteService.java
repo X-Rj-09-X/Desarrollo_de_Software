@@ -8,24 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Paciente;
 
-/**
- *
- * @author Ricardo J
- */
 public class PacienteService {
-    
+
     private List<Paciente> pacientes;
-    
+
     public PacienteService() {
         pacientes = new ArrayList<>();
-    
     }
-    
+
     public void crearPaciente(Paciente paciente) {
         pacientes.add(paciente);
     }
-    
-     public List<Paciente> listarPacientes() {
+
+    public List<Paciente> listarPacientes() {
         return pacientes;
     }
 
@@ -41,8 +36,11 @@ public class PacienteService {
         return null;
     }
 
-    public boolean modificarPaciente(String documento, String nombre,
-            String apellido, String telefono) {
+    public boolean modificarPaciente(
+            String documento,
+            String nombre,
+            String apellido,
+            String telefono) {
 
         Paciente paciente = buscarPaciente(documento);
 
@@ -63,11 +61,15 @@ public class PacienteService {
         Paciente paciente = buscarPaciente(documento);
 
         if (paciente != null) {
+
             pacientes.remove(paciente);
             return true;
         }
 
         return false;
+        
     }
+    
+    
     
 }
